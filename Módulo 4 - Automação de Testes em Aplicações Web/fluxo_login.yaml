@@ -1,0 +1,26 @@
+# Módulo 4: Automação de Testes em Aplicações Web
+# Implementação 3: Maestro (Fluxo Declarativo YAML para Web)
+#
+# Este script demonstra como automatizar o mesmo cenário de teste de forma declarativa para a Web.
+
+url: https://www.saucedemo.com/
+---
+# Inicializa o navegador limpando estados anteriores (cookies, caches)
+- launchApp:
+    clearState: true
+
+# Preenche o campo de usuário
+- tapOn:
+    id: "user-name"
+- inputText: "standard_user"
+
+# Preenche o campo de senha
+- tapOn:
+    id: "password"
+- inputText: "secret_sauce"
+
+# Clica no botão de Login usando OCR (reconhecimento do texto visível na tela)
+- tapOn: "Login"
+
+# Valida se o título de sucesso "Products" está visível na tela de inventário
+- assertVisible: "Products"
