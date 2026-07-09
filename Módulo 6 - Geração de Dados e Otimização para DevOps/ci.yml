@@ -1,0 +1,27 @@
+# Exemplo de pipeline de CI/CD para GitHub Actions
+name: Pipeline E2E de Qualidade
+
+on:
+  push:
+    branches: [ "main", "homolog" ]
+
+jobs:
+  executar-barreira-testes:
+    runs-on: ubuntu-latest # Máquina Linux na Nuvem
+    
+    steps:
+    - name: Baixar código fonte atualizado do repositório
+      uses: actions/checkout@v3
+
+    - name: Provisionar ambiente com Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Instalar dependências e preparar Browsers Headless
+      run: |
+        pip install pytest playwright faker
+        playwright install --with-deps
+
+    - name: Disparar suíte de testes em modo Headless
+      run: pytest suite_testes/ --headless

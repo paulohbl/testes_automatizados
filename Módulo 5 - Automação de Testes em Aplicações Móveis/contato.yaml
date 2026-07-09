@@ -1,0 +1,30 @@
+appId: com.google.android.contacts  # ID interno do aplicativo alvo (Google Contacts)
+---
+- launchApp:
+    clearState: true  # Garante que o app inicie zerado (sem cache)
+
+# Trata o popup de permissão de notificação (sistema) caso apareça
+- tapOn:
+    text: "Allow"
+    optional: true
+
+# O Maestro interage via IDs ou texto. 
+- tapOn:
+    id: "com.google.android.contacts:id/floating_action_button"
+
+# O diálogo "Choose where to save" pode aparecer dependendo do estado do app
+- tapOn:
+    text: "Device & Google"
+    optional: true
+
+- tapOn: "First name"
+- inputText: "Alan Turing"
+
+- tapOn: "Phone (Mobile)"
+- inputText: "555-0100"
+
+- tapOn: "Save"
+
+
+# Validacao visual se o texto foi renderizado corretamente apos salvar
+- assertVisible: "Alan Turing"
