@@ -18,13 +18,15 @@ appId: com.google.android.contacts  # ID interno do aplicativo alvo (Google Cont
     optional: true
 
 - tapOn: "First name"
-- inputText: "Alan Turing"
+- inputText: "Alan Turing2"
+- hideKeyboard # Esconde o teclado
 
 - tapOn: "Phone (Mobile)"
-- inputText: "555-0100"
+- inputText: "7777-0100"
+- hideKeyboard # Esconde o teclado
 
 - tapOn: "Save"
 
 
 # Validacao visual se o texto foi renderizado corretamente apos salvar
-- assertVisible: "Alan Turing"
+- assertVisible: "Alan Turing2"
