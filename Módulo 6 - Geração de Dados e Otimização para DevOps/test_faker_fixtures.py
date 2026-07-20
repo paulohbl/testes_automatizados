@@ -32,6 +32,7 @@ def gerar_dados_usuario():
     # database.usuarios.delete(email=usuario['email'])
 
 
+# A fixture criada acima é passada como parâmetro
 def test_cadastro_sistema(gerar_dados_usuario):
     # O script consome os dados dinâmicos e únicos gerados pela fixture
     nome_usuario = gerar_dados_usuario['nome']
