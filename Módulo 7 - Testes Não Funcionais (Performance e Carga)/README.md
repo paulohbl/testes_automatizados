@@ -14,7 +14,7 @@ Este diretório contém exemplos práticos demonstrando testes de carga, estress
 
 ### Passo 1: Iniciar a API Local Mock
 Ative o ambiente conda do curso e inicie o servidor Flask:
-```bash
+```powershell
 conda activate testes-automatizados
 python app.py
 ```
@@ -24,8 +24,14 @@ Isso iniciará o servidor na URL `http://localhost:5000`.
 
 ### Passo 2: Executar Testes com Locust
 
+Caso não possua o **Locust** instalado em seu ambiente virtual, ative o ambiente e realize a instalação:
+```powershell
+conda activate testes-automatizados
+pip install locust
+```
+
 Com o servidor Flask rodando em um terminal, abra um segundo terminal e execute:
-```bash
+```powershell
 conda activate testes-automatizados
 locust -f locustfile.py --host=http://localhost:5000
 ```
@@ -41,10 +47,10 @@ locust -f locustfile.py --host=http://localhost:5000
 O **k6** é executado por meio de um binário local de alta performance. Caso queira testá-lo manualmente:
 1. Faça o download no site oficial: [https://k6.io](https://k6.io) ou instale via gerenciador de pacotes do Windows (como o winget):
    ```powershell
-   winget install grafana.k6
+   winget install GrafanaLabs.k6 --accept-source-agreements --accept-package-agreements
    ```
 2. Após a instalação, execute o teste de carga:
-   ```bash
+   ```powershell
    k6 run script-carga.js
    ```
 3. O k6 imprimirá um relatório estatístico completo diretamente no terminal ao final do teste (contendo tempo de resposta médio, mediana, p90, p95 e falhas).
